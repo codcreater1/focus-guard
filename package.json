@@ -1,0 +1,33 @@
+{
+  "name": "focus-guard",
+  "version": "1.0.0",
+  "description": "Deep focus enforcement app",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "concurrently \"npm run react\" \"npm run electron-wait\"",
+    "react": "set BROWSER=none && react-scripts start",
+    "electron-wait": "wait-on http://localhost:3000 && set NODE_ENV=development && electron .",
+    "build": "react-scripts build && electron-builder",
+    "electron": "set NODE_ENV=development && electron ."
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0",
+    "react-scripts": "5.0.1",
+    "wait-on": "^7.0.0"
+  },
+  "browserslist": {
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version"]
+  },
+  "build": {
+    "appId": "com.focusguard.app",
+    "productName": "Focus Guard",
+    "win": { "requestedExecutionLevel": "requireAdministrator" }
+  }
+}
